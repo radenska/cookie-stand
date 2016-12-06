@@ -11,7 +11,8 @@ var locationPike = {
   hourlyCust: [],
   custPerHour: function() {
     for (var i = 0; i < hours.length; i++) {
-      this.hourlyCust[i] = (Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1)) + this.minCustomer);
+      this.hourlyCust.push(Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1)) + this.minCustomer);
+      //this.hourlyCust[i] = (Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1)) + this.minCustomer);
     }
   },
   numHourlyCookies: [],
@@ -56,7 +57,7 @@ var locationSeaTac = {
   hourlyCust: [],
   custPerHour: function() {
     for (var i = 0; i < hours.length; i++) {
-      this.hourlyCust[i] = (Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1)) + this.minCustomer);
+      this.hourlyCust.push(Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1)) + this.minCustomer);
     }
   },
   numHourlyCookies: [],
