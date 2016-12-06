@@ -32,9 +32,14 @@ function Location(locationName, minCustomer, maxCustomer, aveSale) {
 
   this.render = function() {
     this.hourlySales(); //when hourly is run, calling totalDailySales assures all of the attributes of the object obtain data
-    var trEl = document.createElement('tr');
     var cookieList = document.getElementById('cookieInfo');
-    for (var i = 0; i < hours.length; i++) {
+    var trEl = document.createElement('tr');//37-40, header
+    var thEl = document.createElement('th');
+    thEl.textContent = this.locationName;
+    trEl.appendChild(thEl);
+    cookieList.appendChild(trEl);
+
+    for (var i = 0; i < hours.length; i++) {//41-45, hourly cookies
       var tdEl = document.createElement('td');
       tdEl.textContent = this.numHourlyCookies[i];
       trEl.appendChild(tdEl);
@@ -49,13 +54,17 @@ function Location(locationName, minCustomer, maxCustomer, aveSale) {
 
 function makeHeaderRow() {
   var cookieList = document.getElementById('cookieInfo');
-  for (var i = 0; i < locationNameList.length; i++) {
-    var trEl = document.createElement('tr');
+  var trEl = document.createElement('tr');
+  for (var i = -1; i < hours.length; i++) {
     var thEl = document.createElement('th');
-    thEl.textContent = locationNameList[i];
+    thEl.textContent = hours[i];
     trEl.appendChild(thEl);
     cookieList.appendChild(trEl);
   }
+  thEl = document.createElement('th');
+  thEl.textContent = 'Total';
+  trEl.appendChild(thEl);
+  cookieList.appendChild(trEl);
 }
 
 makeHeaderRow();
@@ -66,21 +75,26 @@ for (var i = 0; i < locationNameList.length; i++) {
 }
 
 function makeFooterRow() {
-  var totalOfTotals = 0;
   var cookieList = document.getElementById('cookieInfo');
-  for (var i = 0; i < locationNameList.length; i++) {
-    var trEl = document.createElement('tr');
-    var tdEl = document.createElement('td');
-    tdEl.textContent = locationObjList[i].totalCookies;
-    trEl.appendChild(tdEl);
+  var trEl = document.createElement('tr');
+  var thEl = document.createElement('th');
+  thEl.textContent = 'Total';
+  trEl.appendChild(thEl);
+  cookieList.appendChild(trEl);
+  var hourTotal = 0;
+  for (var i = 0; i < hours.length; i++) {
+    for (var j = 0; j < locationObjList.length; j++) {
+      hourTotal += locationObjList[j].numHourlyCookies[i];
+    }
+    thEl = document.createElement('th');
+    thEl.textContent = hourTotal;
+    trEl.appendChild(thEl);
     cookieList.appendChild(trEl);
-    totalOfTotals += tdEl;
   }
-
+  // thEl = document.createElement('th');
+  // thEl.textContent = 'Total';
+  // trEl.appendChild(thEl);
+  // cookieList.appendChild(trEl);
 }
 
 makeFooterRow();
-
-//function to make header row
-//for loop to render each store to make table
-//function to make a footer row
