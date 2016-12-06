@@ -1,6 +1,39 @@
 * {
+  font-family: arial;
   background-color: lightgray;
-  color: red;
-  font-size: 36px;
+  margin: 10px;
+  border-radius: 7px;
+  padding: 10px;
   text-align: center;
+  /*color: red;
+  font-size: 36px;
+  text-align: center;*/
+}
+
+header {
+  color: orange;
+  font-size: 30px;
+  text-shadow: 2px 2px 2px black;
+}
+
+ul {
+  width: 230px;
+  overflow: auto;
+  float: left;
+  font-size: 14px;
+  list-style: none;
+  color: black;
+  background-color: lightyellow;
+}
+
+li {
+  background-color: lightyellow;
+  padding: 3px;
+  margin: 3px;
+  font-stretch: extra-condensed;
+}
+
+h1 {
+  color: purple;
+  font-size: 22px;
 }
