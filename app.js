@@ -45,10 +45,10 @@ function Location(locationName, minCustomer, maxCustomer, aveSale) {
       trEl.appendChild(tdEl);
       cookieList.appendChild(trEl);
     }
-    // var locName = document.getElementById('cookieInfo');
-    // liEl = document.createElement('li');
-    // liEl.textContent = 'total ' + this.totalCookies + ' cookies';
-    // locName.appendChild(liEl);
+    thEl = document.createElement('th');
+    thEl.textContent = this.totalCookies;
+    trEl.appendChild(thEl);
+    cookieList.appendChild(trEl);
   };
 }
 
@@ -76,13 +76,14 @@ for (var i = 0; i < locationNameList.length; i++) {
 
 function makeFooterRow() {
   var cookieList = document.getElementById('cookieInfo');
+  var totalTotal = 0;
   var trEl = document.createElement('tr');
   var thEl = document.createElement('th');
   thEl.textContent = 'Total';
   trEl.appendChild(thEl);
   cookieList.appendChild(trEl);
-  var hourTotal = 0;
   for (var i = 0; i < hours.length; i++) {
+    var hourTotal = 0;
     for (var j = 0; j < locationObjList.length; j++) {
       hourTotal += locationObjList[j].numHourlyCookies[i];
     }
@@ -90,11 +91,12 @@ function makeFooterRow() {
     thEl.textContent = hourTotal;
     trEl.appendChild(thEl);
     cookieList.appendChild(trEl);
+    totalTotal += hourTotal;
   }
-  // thEl = document.createElement('th');
-  // thEl.textContent = 'Total';
-  // trEl.appendChild(thEl);
-  // cookieList.appendChild(trEl);
+  thEl = document.createElement('th');
+  thEl.textContent = totalTotal;
+  trEl.appendChild(thEl);
+  cookieList.appendChild(trEl);
 }
 
 makeFooterRow();
