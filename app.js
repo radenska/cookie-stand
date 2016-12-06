@@ -1,6 +1,6 @@
 'strict use';
 
-var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
 var locationPike = {
   locationName: 'Pike and 1st',
@@ -9,27 +9,25 @@ var locationPike = {
   maxCustomer: 65,
   aveSale: 6.3,
   hourlyCust: [],
+  totalCookies: 0,
+  numHourlyCookies: [],
+
   custPerHour: function() {
     for (var i = 0; i < hours.length; i++) {
       this.hourlyCust.push(Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1)) + this.minCustomer);
     }
   },
-  numHourlyCookies: [],
+
   hourlySales: function() {
     this.custPerHour();
     for (var i = 0; i < hours.length; i++) {
       this.numHourlyCookies.push(Math.ceil(this.hourlyCust[i] * this.aveSale));
-    }
-  },
-  totalCookies: 0,
-  totalDailySales: function() {
-    this.hourlySales();
-    for (var i = 0; i < hours.length; i++) {
       this.totalCookies += this.numHourlyCookies[i];
     }
   },
+
   displayStats: function () {
-    this.totalDailySales(); //when displayStatus is run, calling totalDailySales assures all of the attributes of the object obtain data
+    this.hourlySales(); //when displayStatus is run, calling totalDailySales assures all of the attributes of the object obtain data
     var locName = document.getElementById(this.locationID);
     var h1El = document.createElement('h1');
     h1El.textContent = this.locationName;
@@ -54,27 +52,25 @@ var locationSeaTac = {
   maxCustomer: 24,
   aveSale: 1.2,
   hourlyCust: [],
+  numHourlyCookies: [],
+  totalCookies: 0,
+
   custPerHour: function() {
     for (var i = 0; i < hours.length; i++) {
       this.hourlyCust.push(Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1)) + this.minCustomer);
     }
   },
-  numHourlyCookies: [],
+
   hourlySales: function() {
     this.custPerHour();
     for (var i = 0; i < hours.length; i++) {
       this.numHourlyCookies.push(Math.ceil(this.hourlyCust[i] * this.aveSale));
-    }
-  },
-  totalCookies: 0,
-  totalDailySales: function() {
-    this.hourlySales();
-    for (var i = 0; i < hours.length; i++) {
       this.totalCookies += this.numHourlyCookies[i];
     }
   },
+
   displayStats: function() {
-    this.totalDailySales();
+    this.hourlySales();
     var locName = document.getElementById(this.locationID);
     var h1El = document.createElement('h1');
     h1El.textContent = this.locationName;
@@ -99,27 +95,25 @@ var locationSeattleCenter = {
   maxCustomer: 38,
   aveSale: 3.7,
   hourlyCust: [],
+  numHourlyCookies: [],
+  totalCookies: 0,
+
   custPerHour: function() {
     for (var i = 0; i < hours.length; i++) {
       this.hourlyCust.push(Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1)) + this.minCustomer);
     }
   },
-  numHourlyCookies: [],
+
   hourlySales: function() {
     this.custPerHour();
     for (var i = 0; i < hours.length; i++) {
       this.numHourlyCookies.push(Math.ceil(this.hourlyCust[i] * this.aveSale));
-    }
-  },
-  totalCookies: 0,
-  totalDailySales: function() {
-    this.hourlySales();
-    for (var i = 0; i < hours.length; i++) {
       this.totalCookies += this.numHourlyCookies[i];
     }
   },
+
   displayStats: function() {
-    this.totalDailySales();
+    this.hourlySales();
     var locName = document.getElementById(this.locationID);
     var h1El = document.createElement('h1');
     h1El.textContent = this.locationName;
@@ -144,27 +138,25 @@ var locationCapitolHill = {
   maxCustomer: 38,
   aveSale: 2.3,
   hourlyCust: [],
+  numHourlyCookies: [],
+  totalCookies: 0,
+
   custPerHour: function() {
     for (var i = 0; i < hours.length; i++) {
       this.hourlyCust.push(Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1)) + this.minCustomer);
     }
   },
-  numHourlyCookies: [],
+
   hourlySales: function() {
     this.custPerHour();
     for (var i = 0; i < hours.length; i++) {
       this.numHourlyCookies.push(Math.ceil(this.hourlyCust[i] * this.aveSale));
-    }
-  },
-  totalCookies: 0,
-  totalDailySales: function() {
-    this.hourlySales();
-    for (var i = 0; i < hours.length; i++) {
       this.totalCookies += this.numHourlyCookies[i];
     }
   },
+
   displayStats: function() {
-    this.totalDailySales();
+    this.hourlySales();
     var locName = document.getElementById(this.locationID);
     var h1El = document.createElement('h1');
     h1El.textContent = this.locationName;
@@ -189,25 +181,29 @@ var locationAlki = {
   maxCustomer: 16,
   aveSale: 4.6,
   hourlyCust: [],
+  numHourlyCookies: [],
+  totalCookies: 0,
+
   custPerHour: function() {
     for (var i = 0; i < hours.length; i++) {
       this.hourlyCust.push(Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1)) + this.minCustomer);
     }
   },
-  numHourlyCookies: [],
+
   hourlySales: function() {
     this.custPerHour();
     for (var i = 0; i < hours.length; i++) {
       this.numHourlyCookies.push(Math.ceil(this.hourlyCust[i] * this.aveSale));
     }
   },
-  totalCookies: 0,
+
   totalDailySales: function() {
     this.hourlySales();
     for (var i = 0; i < hours.length; i++) {
       this.totalCookies += this.numHourlyCookies[i];
     }
   },
+
   displayStats: function() {
     this.totalDailySales();
     var locName = document.getElementById(this.locationID);
