@@ -1,11 +1,30 @@
 * {
   font-family: arial;
   background-color: lightgray;
-  margin: 10px;
-  border-radius: 7px;
-  padding: 10px;
   text-align: center;
 
+}
+
+table {
+  position: relative;
+  top: 20%;
+  left: 5%;
+  width: 90%;
+  border: 3px solid black;
+  border-collapse: collapse;
+  vertical-align: middle;
+}
+
+th {
+  border: 3px solid;
+  padding: 4px;
+  background-color: salmon;
+}
+
+td {
+  border: 2px solid;
+  text-align: center;
+  background-color: lightblue;
 }
 
 header {
@@ -32,6 +51,7 @@ li {
 }
 
 h1 {
-  color: purple;
-  font-size: 22px;
+  color: salmon;
+  font-size: 24px;
+  text-shadow: 2px 2px black;
 }

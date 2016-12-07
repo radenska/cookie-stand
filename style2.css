@@ -7,6 +7,11 @@
   text-align: center;
 }
 
+img {
+  display: inline;
+  background-color: inherit;
+}
+
 header {
   background-color: salmon;
   color: slategray;
