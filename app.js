@@ -7,9 +7,12 @@ var maxCustomerList = [65, 24, 38, 38, 16];
 var aveSaleList = [6.3, 1.2, 3.7, 2.3, 4.6];
 var locationObjList = [];
 var cookieList = [];
+var tosserList = [];
 var trEl = '';
 var thEl = '';
 var tdEl = '';
+var tableIdCookie = 'cookieInfo';
+var tableIdTossers = 'tosserInfo';
 
 function appendEl(el, el2, elContent, elId, whereApp) { //creates and appends an element, relies on global variables
   el = document.createElement(elId);
@@ -26,7 +29,8 @@ function Location(locationName, minCustomer, maxCustomer, aveSale) { //construct
   this.hourlyCust = [];
   this.totalCookies = 0;
   this.numHourlyCookies = [];
-  this.cookieTossers = 2;
+  this.hourlyTossers = [];
+  this.totalTossers = 0;
 
   this.custPerHour = function() { //generates a random number of customers per hour, based on the min and max for that location
     for (var i = 0; i < hours.length; i++) {
@@ -34,29 +38,39 @@ function Location(locationName, minCustomer, maxCustomer, aveSale) { //construct
     }
   };
 
-  this.hourlySales = function() { //calculates hourly cookie sales and keeps track of total cookies sold
+  this.hourlySales = function() { //calculates hourly cookie sales, tossers needed and keeps track of total cookies and tossers
     this.custPerHour();
     for (var i = 0; i < hours.length; i++) {
       this.numHourlyCookies.push(Math.ceil(this.hourlyCust[i] * this.aveSale));
       this.totalCookies += this.numHourlyCookies[i];
+      if (this.numHourlyCookies[i] >= 40) {
+        this.hourlyTossers[i] = Math.ceil(this.numHourlyCookies[i]/20);
+      }
+      else {
+        this.hourlyTossers[i] = 2;
+      }
+      this.totalTossers += this.hourlyTossers[i];
     }
   };
 
-  this.render = function() { //appends a table row of cookie sales information for each location
-    this.hourlySales(); //when hourly is run, calling totalDailySales assures all of the attributes of the object obtain data
-    cookieList = document.getElementById('cookieInfo');
+  this.go = function() {
+    this.hourlySales();
+  }
+
+  this.render = function(whereApp, tableID, total, hourly) { //appends a table row of cookie or tosser sales information for each location
+    whereApp = document.getElementById(tableID);
     trEl = document.createElement('tr');
-    appendEl(thEl, trEl, this.locationName, 'th', cookieList);
+    appendEl(thEl, trEl, this.locationName, 'th', whereApp);
 
     for (var i = 0; i < hours.length; i++) {
-      appendEl(tdEl, trEl, this.numHourlyCookies[i], 'td', cookieList);
+      appendEl(tdEl, trEl, hourly[i], 'td', whereApp);
     }
-    appendEl(thEl, trEl, this.totalCookies, 'th', cookieList);
+    appendEl(thEl, trEl, total, 'th', whereApp);
   };
 }
 
-function makeHeaderRow() { //makes the header row of the cookie sales table, e.g., list of hours
-  cookieList = document.getElementById('cookieInfo');
+function makeHeaderRow(whereApp, tableID) { //makes the header row full of hours for a table
+  cookieList = document.getElementById(tableID);
   var trEl = document.createElement('tr');
   for (var i = -1; i < hours.length; i++) { //i starts at -1 because the hours need to start on the second column of the table
     appendEl(thEl, trEl, hours[i], 'th', cookieList);
@@ -64,16 +78,19 @@ function makeHeaderRow() { //makes the header row of the cookie sales table, e.g
   appendEl(thEl, trEl, 'Total', 'th', cookieList);
 }
 
-makeHeaderRow();
+makeHeaderRow(cookieList, tableIdCookie);
+makeHeaderRow(tosserList, tableIdTossers);
 
-for (var i = 0; i < locationNameList.length; i++) { //uses constructor function to make all of the location object and stores them in an array
+for (var i = 0; i < locationNameList.length; i++) { //uses constructor function to make all of the location object and stores them in an array, as well as render a row in both the cookie and the tosser table for each object
   locationObjList.push(new Location(locationNameList[i], minCustomerList[i], maxCustomerList[i], aveSaleList[i]));
-  locationObjList[i].render();
+  locationObjList[i].go();
+  locationObjList[i].render(cookieList, tableIdCookie, locationObjList[i].totalCookies, locationObjList[i].numHourlyCookies);
+  locationObjList[i].render(tosserList, tableIdTossers, locationObjList[i].totalTossers, locationObjList[i].hourlyTossers);
 }
 
-function makeFooterRow() { //makes the last row of the table, which is the hourly cookie totals from all locations, and the daily cookie total of all locations together
-  cookieList = document.getElementById('cookieInfo');
+function makeFooterRowCookies() { //makes the last row of the table, which is the hourly cookie totals from all locations, and the daily cookie total of all locations together
   var totalTotal = 0;
+  cookieList = document.getElementById(tableIdCookie);
   trEl = document.createElement('tr');
   appendEl(thEl, trEl, 'Total', 'th', cookieList);
   for (var i = 0; i < hours.length; i++) {
@@ -87,4 +104,21 @@ function makeFooterRow() { //makes the last row of the table, which is the hourl
   appendEl(thEl, trEl, totalTotal, 'th', cookieList);
 }
 
-makeFooterRow();
+function makeFooterRowTossers() { //makes the last row of the table, which is the hourly cookie totals from all locations, and the daily cookie total of all locations together
+  var totalTotal = 0;
+  tosserList = document.getElementById(tableIdTossers);
+  trEl = document.createElement('tr');
+  appendEl(thEl, trEl, 'Total', 'th', tosserList);
+  for (var i = 0; i < hours.length; i++) {
+    var hourTotal = 0; // this gets reset for every i increment because otherwise it would be a cumulative total (6am would get added to 7am, etc.)
+    for (var j = 0; j < locationObjList.length; j++) { //nested for loop because for every hour, we need to access hourly cookie totals from all locations
+      hourTotal += locationObjList[j].hourlyTossers[i];
+    }
+    appendEl(thEl, trEl, hourTotal, 'th', tosserList);
+    totalTotal += hourTotal;
+  }
+  appendEl(thEl, trEl, totalTotal, 'th', tosserList);
+}
+
+makeFooterRowCookies();
+makeFooterRowTossers();
