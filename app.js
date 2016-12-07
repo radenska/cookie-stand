@@ -13,16 +13,21 @@ var thEl = '';
 var tdEl = '';
 var tableIdCookie = 'cookieInfo';
 var tableIdTossers = 'tosserInfo';
-var infoList = document.getElementByID('cookie-list');
-var infoForm = document.getElementByID('cookie-form');
-var userInput = [];
+// var infoList = document.getElementByID('cookie-list');
+// var infoForm = document.getElementByID('cookie-form');
+// var userInput = [];
+//
+// var input = function(locName, min, max, average) {
+//   this.locName = locName;
+//   this.min = min;
+//   this.max = max;
+//   this.average = average;
+// }
+// add render function for form user input here
 
-var input = function(locName, min, max, average) {
-  this.locName = locName;
-  this.min = min;
-  this.max = max;
-  this.average = average;
-}
+// call RENDER function for new info!!!
+
+
 
 function appendEl(el, el2, elContent, elId, whereApp) { //creates and appends an element, relies on global variables
   el = document.createElement(elId);
@@ -88,7 +93,7 @@ function makeHeaderRow(whereApp, tableID) { //makes the header row full of hours
 }
 
 makeHeaderRow(cookieList, tableIdCookie);
-makeHeaderRow(tosserList, tableIdCookie);
+makeHeaderRow(tosserList, tableIdTossers);
 
 for (var i = 0; i < locationNameList.length; i++) { //uses constructor function to make all of the location object and stores them in an array, as well as render a row in both the cookie and the tosser table for each object
   locationObjList.push(new Location(locationNameList[i], minCustomerList[i], maxCustomerList[i], aveSaleList[i]));
@@ -131,3 +136,9 @@ function makeFooterRowTossers() { //makes the last row of the table, which is th
 
 makeFooterRowCookies();
 makeFooterRowTossers();
+
+//event handler function (has to include event.preventDefault();)
+
+//add an event listener to an html form (type of event it's listening for, then call handler)
+
+//call event listener
