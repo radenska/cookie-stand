@@ -19,6 +19,12 @@ var locForm = document.getElementById('loc-form');
 
 function inputHandler() {
   event.preventDefault();
+  if(!event.target.Location.value || !event.target.Min.value || !event.target.Max.value || !event.target.Average.value) {
+    return alert('Please fill in all requested information. You cannot have blank fields!');
+  }
+  if(parseFloat(event.target.Min.value) === isNaN || parseFloat(event.target.Max.value) === isNaN || parseFloat(event.target.Average.value) === isNaN) {
+    return alert('Please make sure you enter numbers only for the Min, Max, and Average values!');
+  }
   locationNameList.push(event.target.Location.value);
   minCustomerList.push(Number(event.target.Min.value));
   maxCustomerList.push(Number(event.target.Max.value));
@@ -148,11 +154,5 @@ function makeFooterRowTossers() { //makes the last row of the table, which is th
 
 makeFooterRowCookies();
 makeFooterRowTossers();
-
-//event handler function (has to include event.preventDefault();)
-
-//add an event listener to an html form (type of event it's listening for, then call handler)
-
-//call event listener
 
 locForm.addEventListener('submit', inputHandler);
