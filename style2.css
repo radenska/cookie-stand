@@ -1,8 +1,5 @@
 * {
   background-color: slategray;
-  margin: 5px;
-  border-radius: 3px;
-  padding: 5px;
   text-align: center;
 }
 
@@ -12,54 +9,67 @@
 
 header {
   font-family: arial;
-  width: 30em;
+  width: 20em;
   background-color: salmon;
   color: slategray;
   font-size: 4em;
-  text-shadow: 0.2em 0.2em 0.2em black;
+  text-shadow: 0.05em 0.05em 0.05em black;
   position: fixed;
   margin-top: auto;
   opacity: 0.9;
   display: block;
-  z-index: 5;
+  z-index: 9;
+  border-radius: 0.3em;
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+  padding-top: 0.5em;
 }
 
 nav {
   overflow: auto;
-  flex: 1;
+  font-size: 0.6em;
   position: static;
-  background-color: inherit;
-  display: block;
+  background-color: salmon;
+  z-index: 7;
+  border-radius: inherit;
 }
 
-.headerImage {
+/*.headerImage {
   display: block;
   flex: 1;
   position: fixed;
-}
-
-nav>ul>li, nav>ul {
+}*/
+ul {
   background-color: salmon;
-  font-size: 2em;
+}
+li {
+  width: 30em;
+  list-style: none;
+  background-color: salmon;
+  font-size: 1em;
   display: inline;
+  z-index: 2;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 #content {
   color: black;
   position: relative;
-  top: 10em;
+  top: 15em;
   width: 30em;
   z-index: 3;
 }
 
 h1 {
   font-family: 'Verdana', serif;
-  font-size: 4em;
-  padding
+  font-size: 2em;
+  padding: 0.5em;
 }
 p {
   font-family: 'Cookie', Cursive;
   font-size: 2.5em;
+  padding: 0.5em;
 }
 /*
 ul {
