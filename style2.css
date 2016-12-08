@@ -7,24 +7,36 @@
   text-align: center;
 }
 
+#page {
+  width: auto;
+}
+
 img {
   display: inline;
   background-color: inherit;
 }
 
 header {
+  flex: 1;
   background-color: salmon;
   color: slategray;
   font-size: 42px;
   text-shadow: 2px 2px 2px black;
   display: block;
   position: fixed;
-  width: 95%;
   margin-top: auto;
 }
 
 nav {
+  overflow: auto;
+  flex: 1;
+  position: static;
   background-color: inherit;
+}
+
+.headerImage {
+  flex: 1;
+  position: static;
 }
 
 nav>ul>li, nav>ul {

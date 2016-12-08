@@ -13,6 +13,41 @@ var thEl = '';
 var tdEl = '';
 var tableIdCookie = 'cookieInfo';
 var tableIdTossers = 'tosserInfo';
+var cookieTable = document.getElementById(tableIdCookie);
+var tosserTable = document.getElementById(tableIdTossers);
+var locForm = document.getElementById('loc-form');
+
+function inputHandler() {
+  event.preventDefault();
+  if(!event.target.Location.value || !event.target.Min.value || !event.target.Max.value || !event.target.Average.value) {
+    return alert('Please fill in all requested information. You cannot have blank fields!');
+  }
+  if(parseFloat(event.target.Min.value) === isNaN || parseFloat(event.target.Max.value) === isNaN || parseFloat(event.target.Average.value) === isNaN) {
+    return alert('Please make sure you enter numbers only for the Min, Max, and Average values!');
+  }
+  if(parseFloat(event.target.Min.value) % 1 !== 0 || parseFloat(event.target.Max.value) % 1 !== 0) {
+    return alert('Min and Max should both be whole numbers. No decimals!');
+  }
+  if (locationNameList.includes(event.target.Location.value)) {
+    return alert('This location already exists!');
+  }
+  locationNameList.push(event.target.Location.value);
+  minCustomerList.push(parseFloat(event.target.Min.value));
+  maxCustomerList.push(parseFloat(event.target.Max.value));
+  aveSaleList.push(parseFloat(event.target.Average.value));
+  locationObjList = [];
+  cookieTable.innerHTML = '';
+  tosserTable.innerHTML = '';
+  makeHeaderRow(cookieList, tableIdCookie);
+  makeHeaderRow(tosserList, tableIdTossers);
+  makeObjects();
+  event.target.Location.value = null;
+  event.target.Min.value = null;
+  event.target.Max.value = null;
+  event.target.Average.value = null;
+  makeFooterRowCookies();
+  makeFooterRowTossers();
+}
 
 function appendEl(el, el2, elContent, elId, whereApp) { //creates and appends an element, relies on global variables
   el = document.createElement(elId);
@@ -53,7 +88,7 @@ function Location(locationName, minCustomer, maxCustomer, aveSale) { //construct
     }
   };
 
-  this.go = function() {
+  this.go = function() { //this is separate from the render function because otherwise the randomly generated data would change from cookies to tossers when render() is called twice
     this.hourlySales();
   }
 
@@ -61,7 +96,6 @@ function Location(locationName, minCustomer, maxCustomer, aveSale) { //construct
     whereApp = document.getElementById(tableID);
     trEl = document.createElement('tr');
     appendEl(thEl, trEl, this.locationName, 'th', whereApp);
-
     for (var i = 0; i < hours.length; i++) {
       appendEl(tdEl, trEl, hourly[i], 'td', whereApp);
     }
@@ -70,23 +104,27 @@ function Location(locationName, minCustomer, maxCustomer, aveSale) { //construct
 }
 
 function makeHeaderRow(whereApp, tableID) { //makes the header row full of hours for a table
-  cookieList = document.getElementById(tableID);
+  whereApp = document.getElementById(tableID);
   var trEl = document.createElement('tr');
   for (var i = -1; i < hours.length; i++) { //i starts at -1 because the hours need to start on the second column of the table
-    appendEl(thEl, trEl, hours[i], 'th', cookieList);
+    appendEl(thEl, trEl, hours[i], 'th', whereApp);
   }
-  appendEl(thEl, trEl, 'Total', 'th', cookieList);
+  appendEl(thEl, trEl, 'Total', 'th', whereApp);
 }
 
 makeHeaderRow(cookieList, tableIdCookie);
 makeHeaderRow(tosserList, tableIdTossers);
 
-for (var i = 0; i < locationNameList.length; i++) { //uses constructor function to make all of the location object and stores them in an array, as well as render a row in both the cookie and the tosser table for each object
-  locationObjList.push(new Location(locationNameList[i], minCustomerList[i], maxCustomerList[i], aveSaleList[i]));
-  locationObjList[i].go();
-  locationObjList[i].render(cookieList, tableIdCookie, locationObjList[i].totalCookies, locationObjList[i].numHourlyCookies);
-  locationObjList[i].render(tosserList, tableIdTossers, locationObjList[i].totalTossers, locationObjList[i].hourlyTossers);
+function makeObjects() {
+  for (var i = 0; i < locationNameList.length; i++) { //uses constructor function to make all of the location object and stores them in an array, as well as render a row in both the cookie and the tosser table for each object
+    locationObjList.push(new Location(locationNameList[i], minCustomerList[i], maxCustomerList[i], aveSaleList[i]));
+    locationObjList[i].go();
+    locationObjList[i].render(cookieList, tableIdCookie, locationObjList[i].totalCookies, locationObjList[i].numHourlyCookies);
+    locationObjList[i].render(tosserList, tableIdTossers, locationObjList[i].totalTossers, locationObjList[i].hourlyTossers);
+  }
 }
+
+makeObjects();
 
 function makeFooterRowCookies() { //makes the last row of the table, which is the hourly cookie totals from all locations, and the daily cookie total of all locations together
   var totalTotal = 0;
@@ -104,7 +142,7 @@ function makeFooterRowCookies() { //makes the last row of the table, which is th
   appendEl(thEl, trEl, totalTotal, 'th', cookieList);
 }
 
-function makeFooterRowTossers() { //makes the last row of the table, which is the hourly cookie totals from all locations, and the daily cookie total of all locations together
+function makeFooterRowTossers() { //makes the last row of the table, which is the hourly tosser totals from all locations, and the daily cookie total of all locations together
   var totalTotal = 0;
   tosserList = document.getElementById(tableIdTossers);
   trEl = document.createElement('tr');
@@ -122,3 +160,5 @@ function makeFooterRowTossers() { //makes the last row of the table, which is th
 
 makeFooterRowCookies();
 makeFooterRowTossers();
+
+locForm.addEventListener('submit', inputHandler);

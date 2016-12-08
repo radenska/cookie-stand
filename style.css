@@ -55,3 +55,54 @@ h1 {
   font-size: 24px;
   text-shadow: 2px 2px black;
 }
+
+fieldset {
+  width: inherit;
+  border: 0.3em solid black;
+  padding: 1em;
+  border-radius: 1em;
+  background-color: lightyellow;
+  text-align: right;
+}
+
+label {
+  font-size: 1.5em;
+  background-color: lightyellow;
+
+}
+
+legend {
+  font-size: 1.5em;
+  width: inherit;
+  border: 0.2em solid black;
+  padding: 0.5em;
+  border-radius: 1em;
+  background: lightblue;
+  text-align: left;
+}
+
+input {
+  color: black;
+  font-size: 1.5em;
+  border: 0.1em solid black;
+  border-radius: 0.2em;
+  background-color: #ECF0F1;
+
+}
+
+input[type="number"] {
+  width: 3em;
+}
+
+input[type="text"] {
+  width: 7em;
+}
+.submit {
+  margin: 1em;
+  width: 20px;
+  display: inline;
+}
+input#submit {
+  color: salmon;
+  background-color: salmon;
+}
