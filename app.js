@@ -25,10 +25,16 @@ function inputHandler() {
   if(parseFloat(event.target.Min.value) === isNaN || parseFloat(event.target.Max.value) === isNaN || parseFloat(event.target.Average.value) === isNaN) {
     return alert('Please make sure you enter numbers only for the Min, Max, and Average values!');
   }
+  if(parseFloat(event.target.Min.value) % 1 !== 0 || parseFloat(event.target.Max.value) % 1 !== 0) {
+    return alert('Min and Max should both be whole numbers. No decimals!');
+  }
+  if (locationNameList.includes(event.target.Location.value)) {
+    return alert('This location already exists!');
+  }
   locationNameList.push(event.target.Location.value);
-  minCustomerList.push(Number(event.target.Min.value));
-  maxCustomerList.push(Number(event.target.Max.value));
-  aveSaleList.push(Number(event.target.Average.value));
+  minCustomerList.push(parseFloat(event.target.Min.value));
+  maxCustomerList.push(parseFloat(event.target.Max.value));
+  aveSaleList.push(parseFloat(event.target.Average.value));
   locationObjList = [];
   cookieTable.innerHTML = '';
   tosserTable.innerHTML = '';
