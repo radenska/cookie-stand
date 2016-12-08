@@ -1,5 +1,5 @@
 * {
-  background-color: slategray;
+  background-color: #5D6867;
   text-align: center;
 }
 
@@ -11,7 +11,7 @@ header {
   font-family: arial;
   width: 20em;
   background-color: salmon;
-  color: slategray;
+  color: #00B4A6;
   font-size: 4em;
   text-shadow: 0.05em 0.05em 0.05em black;
   position: fixed;
@@ -30,7 +30,6 @@ nav {
   font-size: 0.6em;
   position: static;
   background-color: salmon;
-  z-index: 7;
   border-radius: inherit;
 }
 
@@ -41,16 +40,29 @@ nav {
 }*/
 ul {
   background-color: salmon;
+  vertical-align: middle;
 }
+
 li {
   width: 30em;
+  vertical-align: middle;
   list-style: none;
-  background-color: salmon;
+  background-color: #FFBE75;
   font-size: 1em;
   display: inline;
-  z-index: 2;
-  padding-left: 1em;
-  padding-right: 1em;
+  border-radius: 0.1em;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+  margin-left: 1em;
+  margin-right: 1em;
+
+}
+
+li:hover {
+  color: #FFBE75;
+  background-color: #5D6867;
 }
 
 #content {
