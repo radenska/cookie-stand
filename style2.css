@@ -8,23 +8,19 @@
 }
 
 #page {
-  width: auto;
-}
 
-img {
-  display: inline;
-  background-color: inherit;
 }
 
 header {
-  flex: 1;
+  flex: 30em;
   background-color: salmon;
   color: slategray;
   font-size: 42px;
   text-shadow: 2px 2px 2px black;
-  display: block;
   position: fixed;
   margin-top: auto;
+  opacity: 0.9;
+  display: block;
 }
 
 nav {
@@ -32,11 +28,13 @@ nav {
   flex: 1;
   position: static;
   background-color: inherit;
+  display: block;
 }
 
 .headerImage {
+  display: block;
   flex: 1;
-  position: static;
+  position: fixed;
 }
 
 nav>ul>li, nav>ul {
@@ -46,10 +44,8 @@ nav>ul>li, nav>ul {
 }
 
 #content {
-  margin-top: 150px;
   font-size: 42px;
   color: black;
-  display: block;
 }
 
 /*ul {
