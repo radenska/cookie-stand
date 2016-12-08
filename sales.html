@@ -5,6 +5,27 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <form id="loc-form">
+      <fieldset>
+        <legend>Add a new location, Pat!</legend>
+
+        <label for="Location"> Location: </label>
+        <input name="Location" type="text" />
+
+        <label for="Min"> Min: </label>
+        <input name="Min" type="number" step="any"/>
+
+        <label for="Max"> Max: </label>
+        <input name="Max" type="number" step="any" />
+
+        <label for="Average"> Average: </label>
+        <input name="Average" type="number" step="any" />
+
+        <div class="submit"><button type="submit">submit</submit></div>
+
+
+      </fieldset>
+    </form>
     <h1>Number of Cookies Needed Per Hour at Each Location</h1>
     <table id="cookieInfo"></table>
     <div><br><br><br></div>

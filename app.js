@@ -103,17 +103,10 @@ function Location(locationName, minCustomer, maxCustomer, aveSale) { //construct
   };
 }
 
-// function myFun(element) {
-//   var content = element;
-//   appendEl(thEl, trEl, content, 'th', whereApp);
-// }
-
 function makeHeaderRow(whereApp, tableID) { //makes the header row full of hours for a table
   whereApp = document.getElementById(tableID);
   var trEl = document.createElement('tr');
-  appendEl(thEl, trEl, '', 'th', whereApp);
-  for (var i = 0; i < hours.length; i++) {
-  // hours.forEach(myFun());
+  for (var i = -1; i < hours.length; i++) { //i starts at -1 because the hours need to start on the second column of the table
     appendEl(thEl, trEl, hours[i], 'th', whereApp);
   }
   appendEl(thEl, trEl, 'Total', 'th', whereApp);
