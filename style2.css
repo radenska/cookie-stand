@@ -4,13 +4,14 @@
 }
 
 #page {
-
+width: 21em;
 }
 
 header {
   overflow: visible;
   font-family: arial;
   width: 20em;
+  max-height: 4em;
   background-color: salmon;
   color: #00B4A6;
   font-size: 4em;
@@ -23,7 +24,7 @@ header {
   border-radius: 0.3em;
   padding-right: 0.5em;
   padding-left: 0.5em;
-  padding-top: 0.5em;
+  padding-top: 0.2em;
 }
 
 nav {
@@ -47,7 +48,6 @@ ul {
 
 li {
   overflow: visible;
-  width: 30em;
   vertical-align: middle;
   list-style: none;
   background-color: salmon;
@@ -81,12 +81,11 @@ li:hover {
   color: black;
   border: 0.2em solid #B5FF75;
   border-radius: 0.2em;
-  padding: 3em;
   display: none;
   position: absolute;
   text-shadow: none;
   min-width: 12em;
-  min-height: 10em;
+  height: auto;
   z-index: 9;
   padding: 0.2em;
   vertical-align: center;
@@ -100,20 +99,26 @@ li:hover {
 #content {
   color: black;
   position: relative;
-  top: 15em;
-  width: 30em;
+  top: 13em;
+  width: 80em;
   z-index: 3;
+  padding: 2em;
 }
 
 h1 {
   font-family: 'Verdana', serif;
   font-size: 2em;
-  padding: 0.5em;
+  text-align: left;
+  padding-bottom: 0.1em;
+  color: #FFBE75;
+  text-shadow: 0.03em 0.03em 0.03em black;
 }
+
 p {
+  text-align: left;
   font-family: 'Cookie', Cursive;
   font-size: 2.5em;
-  padding: 0.5em;
+  padding: 0.2em;
 }
 
 .addy, .accent {
@@ -121,11 +126,40 @@ p {
   color: #B5FF75;
   background: inherit;
   text-shadow: 0.1em 0.1em 0.1em black;
-  line-height: 0.2em;
+}
+
+a:link {
+  background-color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 .accent {
   font-size: 2em;
+}
+
+img {
+  border-radius: 0.5em;
+  background-color: inherit;
+}
+
+.img1 {
+  float: right;
+  margin-top: 0.2em;
+  margin-left: 0.2em;
+}
+.img2 {
+  float: right;
+  display: block;
+}
+
+.sm {
+  font-size: 0.7em;
+  background-color: inherit;
+  text-align: left;
 }
 /*
 ul {
