@@ -1,6 +1,6 @@
 * {
   font-family: arial;
-  background-color: lightgray;
+  background-color: #5D6867;
   text-align: center;
 
 }
@@ -25,7 +25,7 @@ th {
 td {
   border: 2px solid;
   text-align: center;
-  background-color: lightblue;
+  background-color: #75FFA7;
 }
 
 header {
@@ -41,7 +41,7 @@ ul {
   float: left;
   font-size: 14px;
   list-style: none;
-  color: black;
+  color: #5D6867;
   background-color: lightyellow;
 }
 
@@ -53,7 +53,7 @@ li {
 }
 
 h1 {
-  color: salmon;
+  color: #FFBE75;
   font-size: 24px;
   text-shadow: 2px 2px black;
 }
@@ -80,7 +80,7 @@ legend {
   border: 0.2em solid black;
   padding: 0.5em;
   border-radius: 1em;
-  background: lightblue;
+  background: #75FFA7;
   text-align: left;
 }
 
@@ -104,6 +104,7 @@ input[type="text"] {
   margin: 1em;
   width: 20px;
   display: inline;
+  background-color: salmon;
 }
 input#submit {
   color: salmon;

@@ -210,21 +210,3 @@ img {
   font-size: 0.7em;
   background-color: inherit;
 }
-
-/*
-ul {
-  width: 230px;
-  overflow: auto;
-  float: left;
-  font-size: 14px;
-  list-style: none;
-  color: black;
-  background-color: lightyellow;
-}
-
-li {
-  background-color: lightyellow;
-  padding: 3px;
-  margin: 3px;
-  font-stretch: extra-condensed;
-}*/
