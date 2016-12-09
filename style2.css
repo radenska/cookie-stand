@@ -126,6 +126,7 @@ h1 {
   padding-bottom: 0.1em;
   color: #FFBE75;
   text-shadow: 0.03em 0.03em 0.03em black;
+  vertical-align: center;
 }
 
 p {
@@ -176,6 +177,26 @@ img {
   float: left;
   display: block;
 }
+
+.img4 {
+  float: left;
+  margin-top: 0.2em;
+  margin-right: 0.2em;
+  margin-bottom: 0.2em;
+}
+
+.img5 {
+  margin-right: 0.5em;
+}
+
+.img6 {
+  margin-left: 0.5em;
+}
+
+.img7 {
+  vertical-align: center;
+  float: left;
+}
 .sm {
   width: 42%;
   float: left;
@@ -189,6 +210,7 @@ img {
   font-size: 0.7em;
   background-color: inherit;
 }
+
 /*
 ul {
   width: 230px;
