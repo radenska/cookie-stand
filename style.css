@@ -1,6 +1,6 @@
 * {
   font-family: arial;
-  background-color: lightgray;
+  background-color: #5D6867;
   text-align: center;
 
 }
@@ -13,6 +13,7 @@ table {
   border: 3px solid black;
   border-collapse: collapse;
   vertical-align: middle;
+  opacity: 0.8;
 }
 
 th {
@@ -24,13 +25,14 @@ th {
 td {
   border: 2px solid;
   text-align: center;
-  background-color: lightblue;
+  background-color: #75FFA7;
 }
 
 header {
   color: orange;
   font-size: 30px;
   text-shadow: 2px 2px 2px black;
+  opacity: 0.8;
 }
 
 ul {
@@ -39,19 +41,19 @@ ul {
   float: left;
   font-size: 14px;
   list-style: none;
-  color: black;
-  background-color: lightyellow;
+  color: #5D6867;
+  background-color: #00B4A6;
 }
 
 li {
-  background-color: lightyellow;
+  background-color: #00B4A6;
   padding: 3px;
   margin: 3px;
   font-stretch: extra-condensed;
 }
 
 h1 {
-  color: salmon;
+  color: #FFBE75;
   font-size: 24px;
   text-shadow: 2px 2px black;
   border-width: 5px; 
@@ -62,13 +64,14 @@ fieldset {
   border: 0.3em solid black;
   padding: 1em;
   border-radius: 1em;
-  background-color: lightyellow;
+  background-color: #00B4A6;
   text-align: right;
+  opacity: 0.8;
 }
 
 label {
   font-size: 1.5em;
-  background-color: lightyellow;
+  background-color: #00B4A6;
 
 }
 
@@ -78,7 +81,7 @@ legend {
   border: 0.2em solid black;
   padding: 0.5em;
   border-radius: 1em;
-  background: lightblue;
+  background: #75FFA7;
   text-align: left;
 }
 
@@ -102,6 +105,7 @@ input[type="text"] {
   margin: 1em;
   width: 20px;
   display: inline;
+  background-color: salmon;
 }
 input#submit {
   color: salmon;
