@@ -31,6 +31,7 @@ nav {
   position: static;
   background-color: salmon;
   border-radius: inherit;
+  vertical-align: middle;
 }
 
 /*.headerImage {
@@ -57,12 +58,31 @@ li {
   padding-bottom: 0.1em;
   margin-left: 1em;
   margin-right: 1em;
+}
 
+.dropdown {
+  position: relative;
+  position: inline-block;
 }
 
 li:hover {
   color: #FFBE75;
   background-color: #5D6867;
+}
+
+.dropdown-content {
+  right: 0;
+  background-color: #B5FF75;
+  font-size: 0.5em;
+  display: none;
+  position: absolute;
+  width: auto;
+  height: auto;
+  z-index: 9;
+}
+
+.dropdown:hover .dropdown-content{
+  display: block;
 }
 
 #content {
