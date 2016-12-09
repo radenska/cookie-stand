@@ -75,7 +75,7 @@ li:hover {
 .dropdown-content, .dropdown-content2 {
   font-family: 'Verdana', serif;
   overflow: visible;
-  right: 0;
+  right: -6em;
   background-color: #00B4A6;
   font-size: 0.7em;
   color: black;
@@ -84,17 +84,19 @@ li:hover {
   display: none;
   position: absolute;
   text-shadow: none;
-  min-width: 12em;
+  min-width: 15em;
   height: auto;
   z-index: 9;
   padding: 0.2em;
   vertical-align: center;
+  padding: 0.5em;
 }
 
 .dropdown-content2 {
-  min-width: 20em;
-  min-height: 20em;
+  min-width: 18em;
+  min-height: 12em;
   padding: 0.5em;
+  right: -4em;
 }
 
 .dropdown:hover .dropdown-content {
@@ -106,6 +108,7 @@ li:hover {
   display: block;
   overflow: visible;
 }
+
 
 #content {
   color: black;
@@ -163,22 +166,28 @@ img {
   margin-left: 0.2em;
 }
 .img2 {
-  position: absolute;
-  float: right;
+  float: left;
+  width: 55%;
   display: block;
 }
 
 .img3 {
-  position: absolute;
+  width: 55%;
   float: left;
   display: block;
 }
 .sm {
-  position: absolute;
+  width: 42%;
   float: left;
-  font-size: 1em;
+  font-size: 0.8em;
   background-color: inherit;
-  text-align: left;
+  text-align: center;
+  vertical-align: center;
+}
+
+.sm2 {
+  font-size: 0.7em;
+  background-color: inherit;
 }
 /*
 ul {
