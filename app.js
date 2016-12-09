@@ -33,16 +33,22 @@ function inputHandler(event) {
   if(parseFloat(tempMin) % 1 !== 0 || parseFloat(tempMax) % 1 !== 0) {
     return alert('Min and Max should both be whole numbers. No decimals!');
   }
-  if (locationNameList.includes(tempLocation)) {
-    return alert('This location already exists!');
-  }
   if(tempMin > tempMax) {
     return alert('Min should be smaller than Max!!');
   }
-  locationNameList.push(tempLocation);
-  minCustomerList.push(tempMin);
-  maxCustomerList.push(tempMax);
-  aveSaleList.push(tempAverage);
+  if (locationNameList.includes(tempLocation)) {
+    var i = locationNameList.indexOf(tempLocation);
+    minCustomerList[i] = tempMin;
+    maxCustomerList[i] = tempMax;
+    aveSaleList[i] = tempAverage;
+    alert('You have updated the values for ' + tempLocation + '!');
+  } else {
+    locationNameList.push(tempLocation);
+    minCustomerList.push(tempMin);
+    maxCustomerList.push(tempMax);
+    aveSaleList.push(tempAverage);
+    alert('You have added ' + tempLocation + 'to the list of store locations!');
+  }
   locationObjList = [];
   cookieTable.innerHTML = '';
   tosserTable.innerHTML = '';

@@ -42,11 +42,11 @@ ul {
   font-size: 14px;
   list-style: none;
   color: #5D6867;
-  background-color: lightyellow;
+  background-color: #00B4A6;
 }
 
 li {
-  background-color: lightyellow;
+  background-color: #00B4A6;
   padding: 3px;
   margin: 3px;
   font-stretch: extra-condensed;
@@ -63,14 +63,14 @@ fieldset {
   border: 0.3em solid black;
   padding: 1em;
   border-radius: 1em;
-  background-color: lightyellow;
+  background-color: #00B4A6;
   text-align: right;
   opacity: 0.8;
 }
 
 label {
   font-size: 1.5em;
-  background-color: lightyellow;
+  background-color: #00B4A6;
 
 }
 
