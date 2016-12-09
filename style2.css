@@ -8,6 +8,7 @@
 }
 
 header {
+  overflow: visible;
   font-family: arial;
   width: 20em;
   background-color: salmon;
@@ -26,7 +27,7 @@ header {
 }
 
 nav {
-  overflow: auto;
+  overflow: visible;
   font-size: 0.6em;
   position: static;
   background-color: salmon;
@@ -45,44 +46,55 @@ ul {
 }
 
 li {
+  overflow: visible;
   width: 30em;
   vertical-align: middle;
   list-style: none;
-  background-color: #FFBE75;
+  background-color: salmon;
   font-size: 1em;
   display: inline;
   border-radius: 0.1em;
   padding-left: 0.3em;
   padding-right: 0.3em;
   padding-top: 0.1em;
-  padding-bottom: 0.1em;
+  padding-bottom: 0.2em;
   margin-left: 1em;
   margin-right: 1em;
 }
 
 .dropdown {
+  overflow: visible;
   position: relative;
   position: inline-block;
 }
 
 li:hover {
-  color: #FFBE75;
-  background-color: #5D6867;
+  color: #5D6867;
 }
 
 .dropdown-content {
+  font-family: 'Verdana', serif;
+  overflow: visible;
   right: 0;
-  background-color: #B5FF75;
-  font-size: 0.5em;
+  background-color: #00B4A6;
+  font-size: 0.7em;
+  color: black;
+  border: 0.2em solid #B5FF75;
+  border-radius: 0.2em;
+  padding: 3em;
   display: none;
   position: absolute;
-  width: auto;
-  height: auto;
+  text-shadow: none;
+  min-width: 12em;
+  min-height: 10em;
   z-index: 9;
+  padding: 0.2em;
+  vertical-align: center;
 }
 
 .dropdown:hover .dropdown-content{
   display: block;
+  overflow: visible;
 }
 
 #content {
@@ -102,6 +114,18 @@ p {
   font-family: 'Cookie', Cursive;
   font-size: 2.5em;
   padding: 0.5em;
+}
+
+.addy, .accent {
+  font-family: 'Cookie', Cursive;
+  color: #B5FF75;
+  background: inherit;
+  text-shadow: 0.1em 0.1em 0.1em black;
+  line-height: 0.2em;
+}
+
+.accent {
+  font-size: 2em;
 }
 /*
 ul {
