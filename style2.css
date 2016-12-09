@@ -72,7 +72,7 @@ li:hover {
   color: #5D6867;
 }
 
-.dropdown-content {
+.dropdown-content, .dropdown-content2 {
   font-family: 'Verdana', serif;
   overflow: visible;
   right: 0;
@@ -91,7 +91,18 @@ li:hover {
   vertical-align: center;
 }
 
-.dropdown:hover .dropdown-content{
+.dropdown-content2 {
+  min-width: 20em;
+  min-height: 20em;
+  padding: 0.5em;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  overflow: visible;
+}
+
+.dropdown:hover .dropdown-content2 {
   display: block;
   overflow: visible;
 }
@@ -152,12 +163,20 @@ img {
   margin-left: 0.2em;
 }
 .img2 {
+  position: absolute;
   float: right;
   display: block;
 }
 
+.img3 {
+  position: absolute;
+  float: left;
+  display: block;
+}
 .sm {
-  font-size: 0.7em;
+  position: absolute;
+  float: left;
+  font-size: 1em;
   background-color: inherit;
   text-align: left;
 }
