@@ -17,24 +17,38 @@ var cookieTable = document.getElementById(tableIdCookie);
 var tosserTable = document.getElementById(tableIdTossers);
 var locForm = document.getElementById('loc-form');
 
-function inputHandler() {
+function inputHandler(event) {
   event.preventDefault();
-  if(!event.target.Location.value || !event.target.Min.value || !event.target.Max.value || !event.target.Average.value) {
+  var tempLocation = event.target.Location.value;
+  var tempMin = parseFloat(event.target.Min.value);
+  var tempMax = parseFloat(event.target.Max.value);
+  var tempAverage = parseFloat(event.target.Average.value);
+
+  if(!tempLocation || !tempMin || !tempMax || !tempAverage) {
     return alert('Please fill in all requested information. You cannot have blank fields!');
   }
-  if(parseFloat(event.target.Min.value) === isNaN || parseFloat(event.target.Max.value) === isNaN || parseFloat(event.target.Average.value) === isNaN) {
+  if(parseFloat(tempMin) === isNaN || parseFloat(tempMax) === isNaN || parseFloat(tempAverage) === isNaN) {
     return alert('Please make sure you enter numbers only for the Min, Max, and Average values!');
   }
-  if(parseFloat(event.target.Min.value) % 1 !== 0 || parseFloat(event.target.Max.value) % 1 !== 0) {
+  if(parseFloat(tempMin) % 1 !== 0 || parseFloat(tempMax) % 1 !== 0) {
     return alert('Min and Max should both be whole numbers. No decimals!');
   }
-  if (locationNameList.includes(event.target.Location.value)) {
-    return alert('This location already exists!');
+  if(tempMin > tempMax) {
+    return alert('Min should be smaller than Max!!');
   }
-  locationNameList.push(event.target.Location.value);
-  minCustomerList.push(parseFloat(event.target.Min.value));
-  maxCustomerList.push(parseFloat(event.target.Max.value));
-  aveSaleList.push(parseFloat(event.target.Average.value));
+  if (locationNameList.includes(tempLocation)) {
+    var i = locationNameList.indexOf(tempLocation);
+    minCustomerList[i] = tempMin;
+    maxCustomerList[i] = tempMax;
+    aveSaleList[i] = tempAverage;
+    alert('You have updated the values for ' + tempLocation + '!');
+  } else {
+    locationNameList.push(tempLocation);
+    minCustomerList.push(tempMin);
+    maxCustomerList.push(tempMax);
+    aveSaleList.push(tempAverage);
+    alert('You have added ' + tempLocation + 'to the list of store locations!');
+  }
   locationObjList = [];
   cookieTable.innerHTML = '';
   tosserTable.innerHTML = '';
