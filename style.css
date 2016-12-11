@@ -1,8 +1,16 @@
 * {
   font-family: arial;
-  background-color: #5D6867;
   text-align: center;
 
+}
+
+body {
+  background-color: #5D6867;
+}
+
+form {
+  position: relative;
+  left: 30px;
 }
 
 table {
@@ -56,23 +64,28 @@ h1 {
   color: #FFBE75;
   font-size: 24px;
   text-shadow: 2px 2px black;
-  border-width: 5px; 
+  border-width: 5px;
 }
 
 fieldset {
-  width: inherit;
+  width: 700px;
   border: 0.3em solid black;
   padding: 1em;
   border-radius: 1em;
   background-color: #00B4A6;
-  text-align: right;
+  text-align: left;
   opacity: 0.8;
 }
 
 label {
+  width: 500px;
   font-size: 1.5em;
   background-color: #00B4A6;
-
+  margin: 5px;
+  display: inline-block;
+  float: left;
+  clear: left;
+  text-align: left;
 }
 
 legend {
@@ -91,7 +104,8 @@ input {
   border: 0.1em solid black;
   border-radius: 0.2em;
   background-color: #ECF0F1;
-
+  display: inline-block;
+  float: left;
 }
 
 input[type="number"] {
@@ -104,10 +118,8 @@ input[type="text"] {
 .submit {
   margin: 1em;
   width: 20px;
-  display: inline;
-  background-color: salmon;
+  display: block;
 }
 input#submit {
   color: salmon;
-  background-color: salmon;
 }
