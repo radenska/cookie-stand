@@ -37,7 +37,10 @@ function orderHandler(event) {
     temptshirt = 0;
   }
 
-  var newOrder = [tempname, tempaddress1, tempcctype, tempccnum, tempcccookie, temporcookie, tempcutter, temptshirt];
+  var orderTotal = (tempcccookie + temporcookie + tempcutter * 5 + temptshirt * 10)*1.088;
+  orderTotal.toFixed(2);
+
+  var newOrder = [tempname, tempaddress1, tempcctype, tempccnum, tempcccookie, temporcookie, tempcutter, temptshirt, orderTotal];
   var prevOrders = localStorage.getItem('order');
   if (prevOrders === null) {
     localStorage.setItem('order', newOrder);

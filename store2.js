@@ -1,6 +1,6 @@
 'strict use'
 
-var tableHeader = ['Customer Name', 'Address', 'Credit Card Type', 'Credit Card Number', '# of Choc Chip', '# of Oat Raisin', '# of Cutters', '# of shirts'];
+var tableHeader = ['Customer Name', 'Address', 'Credit Card Type', 'Credit Card Number', '# of Choc Chip', '# of Oat Raisin', '# of Cutters', '# of shirts', 'Total Cost (includes sales tax)'];
 var OrdersTable = document.getElementById('orders');
 var el2;
 var elContent = '';
@@ -10,7 +10,6 @@ var storedString = localStorage.order;
 var orders = storedString.split(',');
 console.log(orders);
 
-// localStorage.removeItem('pending');
 function appendEl(elContent) { //creates and appends an element, relies on global variables
   el = document.createElement('td');
   el.textContent = elContent;
