@@ -7,7 +7,7 @@ function orderHandler(event) {
   var tempname = event.target.name.value;
   var tempaddress1 = event.target.address1.value
   var tempcctype = event.target.cctype.value;
-  var tempccnum = parseInt(event.target.ccnum.value);
+  var tempccnum = event.target.ccnum.value;
   var tempcccookie = parseInt(event.target.cccookie.value);
   var temporcookie = parseInt(event.target.orcookie.value);
   var tempcutter = parseInt(event.target.cutter.value);
@@ -15,6 +15,9 @@ function orderHandler(event) {
 
   if(!tempcccookie && !temporcookie && !tempcutter && !tempshirt) {
     return alert('You must order at least one item!');
+  }
+  if(tempccnum.length !== 16) {
+    return alert('Your credit card number should have 16 digits, please try again!');
   }
   locationNameList.push(tempLocation);
   minCustomerList.push(tempMin);
