@@ -35,6 +35,7 @@ td {
   border: 2px solid;
   text-align: center;
   background-color: #75FFA7;
+  padding: 4px;
 }
 
 header {
@@ -86,9 +87,6 @@ label {
   display: inline-block;
   float: left;
   text-align: left;
-}
-.cred input {
-  width: 10em;
 }
 
 .cc {
