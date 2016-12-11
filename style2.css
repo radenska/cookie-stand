@@ -44,6 +44,7 @@ nav {
 ul {
   background-color: salmon;
   vertical-align: middle;
+  clear: both;
 }
 
 li {
@@ -209,4 +210,8 @@ img {
 .sm2 {
   font-size: 0.7em;
   background-color: inherit;
+}
+
+.container {
+  clear: both;
 }
