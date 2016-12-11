@@ -11,26 +11,27 @@ function orderHandler(event) {
   var tempcccookie = parseInt(event.target.cccookie.value);
   var temporcookie = parseInt(event.target.orcookie.value);
   var tempcutter = parseInt(event.target.cutter.value);
-  var tempshirt = parseInt(event.target.shirt.value);
+  var tempshirt = parseInt(event.target.tshirt.value);
 
-  if(!tempcccookie && !temporcookie && !tempcutter && !tempshirt) {
+  if(!tempcccookie && !temporcookie && !tempcutter && !temptshirt) {
     return alert('You must order at least one item!');
+  }
+  if(!parseInt(tempccnum)) {
+    return alert('Your credit card number should only contain numbers, please try again!');
   }
   if(tempccnum.length !== 16) {
     return alert('Your credit card number should have 16 digits, please try again!');
   }
-  locationNameList.push(tempLocation);
-  minCustomerList.push(tempMin);
-  maxCustomerList.push(tempMax);
-  aveSaleList.push(tempAverage);
-  alert('You have added ' + tempLocation + 'to the list of store locations!');
 
-  // cookieTable.innerHTML = '';
-  // tosserTable.innerHTML = '';
-  event.target.Location.value = null;
-  event.target.Min.value = null;
-  event.target.Max.value = null;
-  event.target.Average.value = null;
+  alert('this thing is working');
+  event.target.name.value = null;
+  event.target.address1.value = null;
+  event.target.cctype.value = null;
+  event.target.ccnum.value = null;
+  event.target.cccookie.value = null;
+  event.target.orcookie.value = null;
+  event.target.cutter.value = null;
+  event.target.tshirt.value = null;
 }
 
 orderForm.addEventListener('submit', orderHandler);

@@ -69,7 +69,7 @@ h1 {
 }
 
 fieldset {
-  width: 800px;
+  width: 900px;
   border: 0.3em solid black;
   padding: 1em;
   border-radius: 1em;
@@ -86,6 +86,9 @@ label {
   display: inline-block;
   float: left;
   text-align: left;
+}
+.cred input {
+  width: 10em;
 }
 
 .cc {
@@ -122,9 +125,8 @@ input[type="number"] {
 }
 
 input[type="text"] {
-  width: 7em;
+  width: 14em;
 }
-
 
 .submit {
   margin: 1em;
