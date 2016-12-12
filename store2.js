@@ -7,7 +7,7 @@ var elContent = '';
 var el;
 var storedString = localStorage.order;
 var orders = storedString.split(',');
-var butt = document.getElementById('button');
+var removedOrder = [];
 
 function appendEl(elContent) { //creates and appends an element, relies on global variables
   el = document.createElement('td');
@@ -29,8 +29,8 @@ function makeTable() {
   for (var j = 0; j < orders.length + 1; j++) {
     if (j % (tableHeader.length - 1) === 0 && j != 0) {
       var filledButton = document.createElement('button');
-      filledButton.type = 'button';
-      var buttonText = document.createTextNode('Fill Order ' + j/(tableHeader.length - 1));
+      filledButton.name = j/(tableHeader.length - 1);
+      var buttonText = document.createTextNode('Fill Order');
       filledButton.appendChild(buttonText);
       el2.appendChild(filledButton);
       OrdersTable.appendChild(el2);
@@ -41,12 +41,25 @@ function makeTable() {
   }
 }
 
+function removeFromOrders(OrderNum) {
+  var start = OrderNum*(tableHeader.length - 1) - (tableHeader.length - 1); //where to start removing from the orders array
+  var end = OrderNum*(tableHeader.length - 1);
+  for (var i = start; i < end; i++) {
+    removedOrder.push(orders[i]);
+  }
+}
+
 function filledHandler(event) {
-  alert('in the handler, yay!')
+  event.preventDefault();
+  var orderNum = event.target.name; //figure out which order needs to be moved;
+  removeFromOrders(orderNum);
+  console.log(removedOrder);
+  // switchLocalStorage();
+  // makeTable();
 }
 
 if(localStorage.order) {
   makeTable();
 }
 
-butt.addEventListener('onclick', filledHandler(event));
+document.addEventListener('click', filledHandler);
