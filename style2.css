@@ -144,8 +144,13 @@ p {
   text-shadow: 0.1em 0.1em 0.1em black;
 }
 
+a {
+  text-decoration: none;
+  background-color: #00B4A6;
+}
+
 a:link {
-  background-color: inherit;
+  background-color: #00B4A6;
   text-decoration: none;
 }
 
