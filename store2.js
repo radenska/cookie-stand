@@ -1,7 +1,7 @@
 'strict use'
 
 var tableHeader = ['Customer Name', 'Address', 'Credit Card Type', 'Credit Card Number', '# of Choc Chip', '# of Oat Raisin', '# of Cutters', '# of shirts', 'Total Cost (includes sales tax)', 'Process Order'];
-var OrdersTable = document.getElementById('orders');
+var OrdersTable;
 var el2;
 var elContent = '';
 var el;
@@ -24,6 +24,7 @@ function makeHeader() {
 }
 
 function makeTable() {
+  OrdersTable = document.getElementById('orders');
   makeHeader();
   el2 = document.createElement('tr');
   for (var j = 0; j < orders.length + 1; j++) {
@@ -47,6 +48,8 @@ function removeFromOrders(OrderNum) {
   for (var i = start; i < end; i++) {
     removedOrder.push(orders[i]);
   }
+  orders.splice(start, tableHeader.length - 1);
+  console.log(orders);
 }
 
 function filledHandler(event) {
@@ -55,7 +58,8 @@ function filledHandler(event) {
   removeFromOrders(orderNum);
   console.log(removedOrder);
   // switchLocalStorage();
-  // makeTable();
+  OrdersTable.innerHTML = '';
+  makeTable();
 }
 
 if(localStorage.order) {
