@@ -24,7 +24,7 @@ function orderHandler(event) {
   if(tempccnumString.length !== 16) {
     return alert('Your credit card number should have 16 digits, please try again!');
   }
-  if(isNaN(tempcccookie)) {
+  if(isNaN(tempcccookie)) { //for some weird reason, I could not get this to work in a function, both outside the Handler function and inside
     tempcccookie = 0;
   }
   if(isNaN(temporcookie)) {
@@ -38,7 +38,7 @@ function orderHandler(event) {
   }
 
   var orderTotal = (tempcccookie + temporcookie + tempcutter * 5 + temptshirt * 10)*1.088;
-  orderTotal.toFixed(2);
+  orderTotal = Math.round(orderTotal * 1e2)/1e2; //this rounds to two decimal places since prices should not have more than hundredths
 
   var newOrder = [tempname, tempaddress1, tempcctype, tempccnum, tempcccookie, temporcookie, tempcutter, temptshirt, orderTotal];
   var prevOrders = localStorage.getItem('order');
@@ -59,6 +59,6 @@ function orderHandler(event) {
 }
 
 
-orderForm.addEventListener('submit', orderHandler);
+orderForm.addEventListener('submit', orderHandler); //comment this out when you do the below
 
-// localStorage.removeItem('order');
+// localStorage.removeItem('order'); uncomment when you want to get rid of the locally stored orders info
